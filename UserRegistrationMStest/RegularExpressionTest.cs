@@ -10,20 +10,20 @@ namespace UserRegistrationMStest
     {
         [TestMethod]
         [TestCategory("First Name")]
-        [DataRow("Aditya","valid")]
+        [DataRow("Aditya", "valid")]
         [DataRow("divya", "Invalid")]
         [DataRow("Divya", "valid")]
         [DataRow("aditya", "Invalid")]
         public void Should_Return_fisrtName_Is_Valid_Or_Not(string inputs, string expected)
         {   //AAA Methodology
             //Arrange
-            RegularExpression regularExpression =new RegularExpression();
+            RegularExpression regularExpression = new RegularExpression();
 
             //Act
             string actual = regularExpression.firstName(inputs);
-            
+
             //Assert
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
         }
         [TestMethod]
         [TestCategory("Last Name")]
@@ -81,6 +81,23 @@ namespace UserRegistrationMStest
 
             //Act
             string actual = regularExpression.password(inputs);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        [TestCategory("Validate Emails")]
+        [DataRow("abc.100@yahoo.com", "valid")]
+        [DataRow("abc_100@abc.net", "valid")]
+        [DataRow("abc@%*.com", "Invalid")]
+        [DataRow("abc@gmail.com.aa.au", "Invalid")]
+        public void Should_Return_Emails_Is_Valid_Or_Not(string inputs, string expected)
+        {   //AAA Methodology
+            //Arrange
+            RegularExpression regularExpression = new RegularExpression();
+
+            //Act
+            string actual = regularExpression.validateEmails(inputs);
 
             //Assert
             Assert.AreEqual(expected, actual);

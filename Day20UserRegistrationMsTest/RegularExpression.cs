@@ -38,6 +38,12 @@ namespace Day20UserRegistrationMsTest
             string pattern = "^[A-Z]{1}[a-z]{4,}(@|#|$|&){1}[0-9]{1,}$";
             return TestPattern(pattern, inputs);
         }
+        //Created method clear all samples of emails-UC9
+        public string validateEmails(string inputs)
+        {
+            string pattern = "^[a-zA-Z]{3}[_,.,+,-]?[a-zA-Z0-9]*@[a-zA-Z0-9]{1,10}.(com|com.au|net|co.in|com.com)$";
+            return TestPattern(pattern, inputs);
+        }
         //Created Test pattern method
         public  string TestPattern(string pattern, string inputs)
         {
