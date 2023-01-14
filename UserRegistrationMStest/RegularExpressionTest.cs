@@ -55,6 +55,21 @@ namespace UserRegistrationMStest
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        [TestCategory("Phone Number")]
+        [DataRow("91 9919819801", "valid")]
+        [DataRow("91 919819801", "Invalid")]
+        public void Should_Return_phoneNumber_Is_Valid_Or_Not(string inputs, string expected)
+        {   //AAA Methodology
+            //Arrange
+            RegularExpression regularExpression = new RegularExpression();
+
+            //Act
+            string actual = regularExpression.phoneNumber(inputs);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }
