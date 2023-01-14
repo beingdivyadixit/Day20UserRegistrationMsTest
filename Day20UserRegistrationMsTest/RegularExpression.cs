@@ -35,7 +35,7 @@ namespace Day20UserRegistrationMsTest
         //Created password method
         public string password(string inputs)
         {
-            string pattern = "^[A-Z]{1}[a-z]{7,}$";
+            string pattern = "^[A-Z]{1}[a-z,0-9]{6,}[0-9]{1}$";
             return TestPattern(pattern, inputs);
         }
         //Created Test pattern method
