@@ -40,6 +40,21 @@ namespace UserRegistrationMStest
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        [TestCategory("Email")]
+        [DataRow("abc.xyz@bl.co.in", "valid")]
+        [DataRow("Abc.xyz@bl.co.in", "Invalid")]
+        public void Should_Return_Email_Is_Valid_Or_Not(string inputs, string expected)
+        {   //AAA Methodology
+            //Arrange
+            RegularExpression regularExpression = new RegularExpression();
+
+            //Act
+            string actual = regularExpression.email(inputs);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }
