@@ -32,6 +32,12 @@ namespace Day20UserRegistrationMsTest
             string pattern = "^[0-9]{2}[ ][0-9]{10}$";
             return TestPattern(pattern, inputs);
         }
+        //Created password method
+        public string password(string inputs)
+        {
+            string pattern = "^[a-zA-Z]{8,}$";
+            return TestPattern(pattern, inputs);
+        }
         //Created Test pattern method
         public  string TestPattern(string pattern, string inputs)
         {
