@@ -15,13 +15,15 @@ namespace UserRegistrationMStest
         public void Should_Return_fisrtName_Is_Valid_Or_Not(string [] inputs, string expected)
         {   //AAA Methodology
             //Arrange
-            RegularExpression regularExpression = new RegularExpression();
+            foreach (string input in inputs)
+            {
+                RegularExpression regularExpression = new RegularExpression(input);
+                //Act
+                string actual = regularExpression.firstName();
 
-            //Act
-            string actual = regularExpression.firstName(inputs);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
+                //Assert
+                Assert.AreEqual(expected, actual);
+            }
         }
         [TestMethod]
         [TestCategory("Last Name")]
@@ -30,13 +32,16 @@ namespace UserRegistrationMStest
         public void Should_Return_lastName_Is_Valid_Or_Not(string [] inputs, string expected)
         {   //AAA Methodology
             //Arrange
-            RegularExpression regularExpression = new RegularExpression();
+           
+            foreach (string input in inputs)
+            {
+                RegularExpression regularExpression = new RegularExpression(input);
+                //Act
+                string actual = regularExpression.lastName();
 
-            //Act
-            string actual = regularExpression.lastName(inputs);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
+                //Assert
+                Assert.AreEqual(expected, actual);
+            }
         }
         [TestMethod]
         [TestCategory("Email")]
@@ -45,13 +50,16 @@ namespace UserRegistrationMStest
         public void Should_Return_Email_Is_Valid_Or_Not(string [] inputs, string expected)
         {   //AAA Methodology
             //Arrange
-            RegularExpression regularExpression = new RegularExpression();
+            
+            foreach (string input in inputs)
+            {
+                RegularExpression regularExpression = new RegularExpression(input);
+                //Act
+                string actual = regularExpression.email();
 
-            //Act
-            string actual = regularExpression.email(inputs);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
+                //Assert
+                Assert.AreEqual(expected, actual);
+            }
         }
         [TestMethod]
         [TestCategory("Phone Number")]
@@ -60,13 +68,16 @@ namespace UserRegistrationMStest
         public void Should_Return_phoneNumber_Is_Valid_Or_Not(string [] inputs, string expected)
         {   //AAA Methodology
             //Arrange
-            RegularExpression regularExpression = new RegularExpression();
+            
+            foreach (string input in inputs)
+            {
+                RegularExpression regularExpression = new RegularExpression(input);
+                //Act
+                string actual = regularExpression.phoneNumber();
 
-            //Act
-            string actual = regularExpression.phoneNumber(inputs);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
+                //Assert
+                Assert.AreEqual(expected, actual);
+            }
         }
         [TestMethod]
         [TestCategory("Password")]
@@ -75,13 +86,16 @@ namespace UserRegistrationMStest
         public void Should_Return_password_Is_Valid_Or_Not(string [] inputs, string expected)
         {   //AAA Methodology
             //Arrange
-            RegularExpression regularExpression = new RegularExpression();
+           
+            foreach (string input in inputs)
+            {
+                RegularExpression regularExpression = new RegularExpression(input);
+                //Act
+                string actual = regularExpression.password();
 
-            //Act
-            string actual = regularExpression.password(inputs);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
+                //Assert
+                Assert.AreEqual(expected, actual);
+            }
         }
         [TestMethod]
         [TestCategory("Validate Emails")]
@@ -90,13 +104,44 @@ namespace UserRegistrationMStest
         public void Should_Return_Emails_Is_Valid_Or_Not(string[] inputs, string expected)
         {   //AAA Methodology
             //Arrange
-            RegularExpression regularExpression = new RegularExpression();
+            
 
-            //Act
-            string actual = regularExpression.validateEmails(inputs);
+            foreach (string input in inputs)
+            {
+                RegularExpression regularExpression = new RegularExpression(input);
+                //Act
+                string actual = regularExpression.validateEmails();
 
-            //Assert
-            Assert.AreEqual(expected, actual);
+                //Assert
+                Assert.AreEqual(expected, actual);
+            }
+        }
+        [TestMethod]
+        [DataRow(new string[] {"", "" }, "Message should not be empty")]
+        public void Given_Message_Should_Return_Custom_Exception(string[] inputs, string expected)
+        {
+            try
+            {
+                //arrange
+               
+                foreach (string input in inputs)
+                {
+                    RegularExpression regularExpression = new RegularExpression(input);
+                    //Act
+                    // string actual = regularExpression.firstName();
+                    //string actual = regularExpression.lastName();
+                    //string actual = regularExpression.email();
+                    //string actual = regularExpression.phoneNumber();
+                    //string actual = regularExpression.password();
+                    string actual = regularExpression.validateEmails();
+                    if (actual != null)
+                        Assert.AreEqual(expected, actual);
+                }
+            }
+            catch (CustomRegularExpressionException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
         }
 
     }
