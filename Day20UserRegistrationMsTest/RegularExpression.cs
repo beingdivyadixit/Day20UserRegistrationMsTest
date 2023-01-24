@@ -27,34 +27,77 @@ namespace Day20UserRegistrationMsTest
         }
         //Created first Name method
         public bool FirstName()
-        {
-            return (Regex.IsMatch(inputs, patternFirstName));
+        {  
+            if((Regex.IsMatch(inputs, patternFirstName)))
+            {
+                return true;
+            }
+            else
+            {
+                throw new CustomRegularExpressionException("Invalid First Name", CustomRegularExpressionException.ExceptionTypes.INVALID_FIRST_NAME);
+            }
         }
         //Created last Name method-UC2
         public bool LastName()
         {
-            return (Regex.IsMatch(inputs, patternLastName));
+            if ((Regex.IsMatch(inputs, patternLastName)))
+            {
+                return true;
+            }
+            else
+            {
+                throw new CustomRegularExpressionException("Invalid Last Name", CustomRegularExpressionException.ExceptionTypes.INVALID_LAST_NAME);
+            }
+        
         }
         //Created email method-UC3
         public bool Email()
         {
-            return (Regex.IsMatch(inputs, patternEmail));
+            if ((Regex.IsMatch(inputs, patternEmail)))
+            {
+                return true;
+            }
+            else
+            {
+                throw new CustomRegularExpressionException("Invalid Email", CustomRegularExpressionException.ExceptionTypes.INVALID_EMAIL);
+            }
         }
         //Created phone number method
         public bool PhoneNumber()
         {
-            return (Regex.IsMatch(inputs, patternPhoneNumber));
+            if ((Regex.IsMatch(inputs, patternPhoneNumber)))
+            {
+                return true;
+            }
+            else
+            {
+                throw new CustomRegularExpressionException("Invalid Phone Number", CustomRegularExpressionException.ExceptionTypes.INVALID_PHONENUMBER);
+            }
         }
         //Created password method
         public bool Password()
         {
-            return (Regex.IsMatch(inputs, patternPassword));
+            if ((Regex.IsMatch(inputs, patternPassword)))
+            {
+                return true;
+            }
+            else
+            {
+                throw new CustomRegularExpressionException("Invalid Password",CustomRegularExpressionException.ExceptionTypes.INVALID_PASSWORD);
+            }
 
         }
         //Created method clear all samples of emails-UC9
         public bool ValidateEmails()
         {
-            return (Regex.IsMatch(inputs, patternValidateEmails));
+            if ((Regex.IsMatch(inputs, patternValidateEmails)))
+            {
+                return true;
+            }
+            else
+            {
+                throw new CustomRegularExpressionException("Invalid Emails", CustomRegularExpressionException.ExceptionTypes.INVALID_ALL_EMAILS);
+            }
 
         }
     }
