@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -9,7 +10,13 @@ namespace Day20UserRegistrationMsTest
 {
      public class RegularExpression
      {
-        public string inputs;    
+        public string inputs;
+        public string patternFirstName = "^[A-Z]{1}[a-z]{2,}$";
+        public string patternLastName = "^[A-Z]{1}[a-z]{2,}$";
+        public string patternEmail = "^[a-z]{3}.[a-z]{2,}@[a-z]{2}.[a-z]{2}.[a-z]{2}$";
+        public string patternPhoneNumber = "^[0-9]{2}[ ][0-9]{10}$";
+        public string patternPassword = "^[A-Z]{1}[a-z]{4,}(@|#|$|&){1}[0-9]{1,}$";
+        public string patternValidateEmails = "^[a-zA-Z]{3}[_,.,+,-]?[a-zA-Z0-9]*@[a-zA-Z0-9]{1,10}.(com|com.au|net|co.in|com.com)$";
         public RegularExpression()
         {
 
@@ -19,65 +26,36 @@ namespace Day20UserRegistrationMsTest
             this.inputs = inputs;
         }
         //Created first Name method
-        public string firstName()
+        public bool FirstName()
         {
-            string pattern = "^[A-Z]{1}[a-z]{2,}$";
-            return TestPattern(pattern, inputs);
+            return (Regex.IsMatch(inputs, patternFirstName));
         }
         //Created last Name method-UC2
-        public string lastName()
+        public bool LastName()
         {
-            string pattern = "^[A-Z]{1}[a-z]{2,}$";
-            return TestPattern(pattern, inputs);
+            return (Regex.IsMatch(inputs, patternLastName));
         }
         //Created email method-UC3
-        public string email()
+        public bool Email()
         {
-            string pattern = "^[a-z]{3}.[a-z]{2,}@[a-z]{2}.[a-z]{2}.[a-z]{2}$";
-            return TestPattern(pattern, inputs);
+            return (Regex.IsMatch(inputs, patternEmail));
         }
         //Created phone number method
-        public string phoneNumber()
+        public bool PhoneNumber()
         {
-            string pattern = "^[0-9]{2}[ ][0-9]{10}$";
-            return TestPattern(pattern, inputs);
+            return (Regex.IsMatch(inputs, patternPhoneNumber));
         }
         //Created password method
-        public string password()
+        public bool Password()
         {
-            string pattern = "^[A-Z]{1}[a-z]{4,}(@|#|$|&){1}[0-9]{1,}$";
-            return TestPattern(pattern, inputs);
+            return (Regex.IsMatch(inputs, patternPassword));
+
         }
         //Created method clear all samples of emails-UC9
-        public  string validateEmails()
+        public bool ValidateEmails()
         {
-            string pattern = "^[a-zA-Z]{3}[_,.,+,-]?[a-zA-Z0-9]*@[a-zA-Z0-9]{1,10}.(com|com.au|net|co.in|com.com)$";
-             return TestPattern(pattern, inputs);
-           
-        }
-        //Created Test pattern method
-        public string TestPattern(string pattern, string inputs)
-        {
-            try
-            {
-                if (Regex.IsMatch(inputs, pattern))
-                {
-                    return "valid";
-                }
-                else if(inputs.Equals(string.Empty))
-                {
-                    Console.WriteLine();
-                    throw new CustomRegularExpressionException("Message should not be empty", CustomRegularExpressionException.ExceptionTypes.EMPTY_INPUT);
-                }
-                else
-                {
-                    return "Invalid";
-                }
-            }
-            catch (NullReferenceException )
-            {
-               throw new CustomRegularExpressionException("Message should not be empty", CustomRegularExpressionException.ExceptionTypes.EMPTY_INPUT);
-            }
+            return (Regex.IsMatch(inputs, patternValidateEmails));
+
         }
     }
 }
